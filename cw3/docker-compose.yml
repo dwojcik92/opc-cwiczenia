@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  app:
+    build: ./app
+    ports:
+      - "5001:5000"
+    networks:
+      - my_network
+
+  train:
+    build: ./train
+    networks:
+      - my_network
+
+  preprocess:
+    build: ./preprocess
+    networks:
+      - my_network
+
+  db:
+    build: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: train_database
+      MYSQL_USER: my_user
+      MYSQL_PASSWORD: my_password
+    networks:
+      - my_network
+    volumes:
+      - db_data:/var/lib/mysql
+
+networks:
+  my_network:
+    driver: bridge
+
+volumes:
+  db_data:
