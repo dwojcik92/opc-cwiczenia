@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: testcontainers/helloworld
+        image: testcontainers/helloworld:1.0.0
         ports:
         - containerPort: 8080
         - containerPort: 8081

@@ -28,7 +28,10 @@ def train():
     X = data[:,0].reshape(-1, 1)
     y = data[:,1].reshape(-1, 1)
     
+    
+    
     print(data)
+    
     
     X_train, X_test, y_train, y_test = train_test_split(X, y)
 
